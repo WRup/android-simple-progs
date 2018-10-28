@@ -11,7 +11,7 @@ public class MyReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         // TODO: This method is called when the BroadcastReceiver is receiving
         // an Intent broadcast.
-        Toast.makeText(context, "AirPlane Mode ON", Toast.LENGTH_LONG).show();
+        Toast.makeText(context, "SMS!", Toast.LENGTH_LONG).show();
 
     }
 

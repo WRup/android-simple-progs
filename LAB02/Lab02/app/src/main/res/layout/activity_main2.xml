@@ -11,17 +11,16 @@
             android:layout_width="217dp"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="Name"
             android:ems="10"
             android:id="@+id/editText" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp" app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/button4"/>
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/button"/>
     <Button
-            android:text="Save Above prefferences"
+            android:text="Save preferences"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button4" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            android:id="@+id/button" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
             app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="296dp"/>
 </android.support.constraint.ConstraintLayout>
