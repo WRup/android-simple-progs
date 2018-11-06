@@ -29,8 +29,8 @@ public class ListActivity extends AppCompatActivity {
             }
         });
         StudentList studentList = new StudentList(createList());
-        ArrayAdapter<String> itemsAdapter =
-                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, studentList.getStudentList());
+        ArrayAdapter<Student> itemsAdapter =
+                new ArrayAdapter<Student>(this, android.R.layout.simple_list_item_1, studentList.getStudentList());
         ListView listView = (ListView) findViewById(R.id.listView1);
         listView.setAdapter(itemsAdapter);
         for(int i=0; i<5;i++)
@@ -39,19 +39,19 @@ public class ListActivity extends AppCompatActivity {
     }
 
 
-    private ArrayList<String> createList(){
-        Student s1 = new Student("Jan", "agsdgsd");
-        Student s2 = new Student("Lam", "sgassgddsdgsd");
-        Student s3 = new Student("Siam", "asdas");
-        Student s4 = new Student("Ktos", "sgsdfgsdfgshfddsdgsd");
-        Student s5 = new Student("Tam", "sdfh");
+    private ArrayList<Student> createList(){
+        Student s1 = new Student("Jan", "Kowalski");
+        Student s2 = new Student("Bartosz", "Kapustka");
+        Student s3 = new Student("Pawel", "Borsiewicz");
+        Student s4 = new Student("Michal", "Bator");
+        Student s5 = new Student("Alan", "Stepnik");
 
-        ArrayList<String> studentList  = new ArrayList<>();
-        studentList.add(s1.getName() +" "+ s5.getSurname());
-        studentList.add(s2.getName() +" "+ s5.getSurname());
-        studentList.add(s3.getName() +" "+ s5.getSurname());
-        studentList.add(s4.getName() +" "+ s5.getSurname());
-        studentList.add(s5.getName() +" "+ s5.getSurname());
+        ArrayList<Student> studentList  = new ArrayList<>();
+        studentList.add(s1);
+        studentList.add(s2);
+        studentList.add(s3);
+        studentList.add(s4);
+        studentList.add(s5);
 
         return studentList;
 

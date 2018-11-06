@@ -26,5 +26,8 @@ public class Student {
         Surname = surname;
     }
 
-
+    @Override
+    public String toString() {
+        return this.getName() + " " + this.getSurname();
+    }
 }

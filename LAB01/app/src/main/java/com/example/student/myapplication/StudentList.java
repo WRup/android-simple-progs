@@ -4,17 +4,17 @@ import java.util.ArrayList;
 
 public class StudentList {
 
-    private ArrayList<String> studentList;
+    private ArrayList<Student> studentList;
 
-    public StudentList(ArrayList<String> studentList) {
+    public StudentList(ArrayList<Student> studentList) {
         this.studentList = studentList;
     }
 
-    public ArrayList<String> getStudentList() {
+    public ArrayList<Student> getStudentList() {
         return studentList;
     }
 
-    public void setStudentList(ArrayList<String> studentList) {
+    public void setStudentList(ArrayList<Student> studentList) {
         this.studentList = studentList;
     }
 }
