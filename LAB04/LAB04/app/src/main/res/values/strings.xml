@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Program4</string>
+    <string name="name_hint">Name</string>
+    <string name="lastname_hint">Lastname</string>
+    <string name="add_btn_label">Add student</string>
+    <string name="student_text">Student</string>
+    <string name="new_student_added_info">Student has been added.</string>
+    <string name="student_data_not_full">Write name and lastname</string>
+    <string name="remove_student_btn">Yes</string>
+    <string name="remove_student_label">Do you want to remove student?</string>
+    <string name="student_removed_info">Student has been removed.</string>
+    <string name="add_group_btn_label">Add group</string>
+    <string name="add_group_btn_confirm">Add</string>
+    <string name="group_name_hint">group name</string>
+    <string name="do_you_want_to_remove_group">Do you want to remove group?</string>
+    <string name="remove_group_confirm">Yes</string>
+    <string name="new_group_warn_empty">Write group name</string>
+    <string name="edit_student_btn_label">Edit</string>
+    <string name="submit_student_edit">Submit</string>
+</resources>
