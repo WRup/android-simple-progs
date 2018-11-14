@@ -87,16 +87,16 @@ public class MyOpenHelper extends SQLiteOpenHelper {
 
     private void insertIntoTables() {
 
-        Group labgr1 = new Group("01","Laboratory");
-        Group labgr2 = new Group("02","Laboratory");
-        Group labgr3 = new Group("03","Laboratory");
-        Group labgr4 = new Group("04","Laboratory");
-        Group labgr5 = new Group("05","Laboratory");
-        Group labgr6 = new Group("06","Laboratory");
-        Group prgr1 = new Group("01", "Practice");
-        Group prgr2 = new Group("02", "Practice");
-        Group prgr3 = new Group("03", "Practice");
-        Group legr1 = new Group("01", "Lecture");
+        Group labgr1 = new Group("GR01","Laboratory");
+        Group labgr2 = new Group("GR02","Laboratory");
+        Group labgr3 = new Group("GR03","Laboratory");
+        Group labgr4 = new Group("GR04","Laboratory");
+        Group labgr5 = new Group("GR05","Laboratory");
+        Group labgr6 = new Group("GR06","Laboratory");
+        Group prgr1 = new Group("GR01", "Practice");
+        Group prgr2 = new Group("GR02", "Practice");
+        Group prgr3 = new Group("GR03", "Practice");
+        Group legr1 = new Group("GR01", "Lecture");
 
 
         groupDaoWrite.insert(labgr1);

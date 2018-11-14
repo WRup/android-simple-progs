@@ -19,15 +19,34 @@ public class Student {
     public int getId() {
         return id;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getSurname() {
         return surname;
     }
-    public ArrayList<Group> getGroups() { return groups; }
 
-    public  void setId(int id)  { this.id = id; }
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public ArrayList<Group> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(ArrayList<Group> groups) {
+        this.groups = groups;
+    }
 
     public String toString() {
         return name + ' ' + surname ;

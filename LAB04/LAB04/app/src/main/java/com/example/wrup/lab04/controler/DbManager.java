@@ -53,6 +53,9 @@ public class DbManager {
     }
 
     //Groups DAO
+    public ArrayList<Group> getGroupsByType(String type) {
+        return groupDaoRead.findAllByType(type);
+    }
     public ArrayList<Group> getGroups() {
         return groupDaoRead.findAll();
     }

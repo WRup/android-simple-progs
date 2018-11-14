@@ -24,7 +24,7 @@ public class GroupDaoRead implements IDaoRead {
 
         Cursor c = db.rawQuery(query, null);
         c.moveToFirst();
-        if(c.getCount() >= 1){
+        if(c.getCount() > 1){
             throw new RuntimeException("TOO MANY ROWS EXCEPTION");
         }
         else if(c.getCount() <= 0){
@@ -62,12 +62,12 @@ public class GroupDaoRead implements IDaoRead {
     }
 
     @Override
-    public ArrayList findAllByType(String type) {
+    public ArrayList<Group> findAllByType(String type) {
         ArrayList<Group> groups = new ArrayList<>();
 
-        String query = "SELECT * FROM " + GroupTable.TABLE_NAME + " WHERE " + GroupTable.GroupColumns.TYPE + " = " + type +";";
+        String query = "SELECT * FROM " + GroupTable.TABLE_NAME + " WHERE " + GroupTable.GroupColumns.TYPE + " = ?"  +";";
 
-        Cursor c = db.rawQuery(query, null);
+        Cursor c = db.rawQuery(query, new String[] {String.valueOf(type)});
         c.moveToFirst();
         if(c.getCount() <= 0){
             groups.clear();

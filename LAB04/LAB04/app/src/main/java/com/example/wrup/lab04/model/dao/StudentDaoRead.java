@@ -27,7 +27,7 @@ public class StudentDaoRead implements IDaoRead {
 
         Cursor c = db.rawQuery(query, null);
         c.moveToFirst();
-        if(c.getCount() >= 1){
+        if(c.getCount() > 1){
             throw new RuntimeException("TOO MANY ROWS EXCEPTION");
         }
         else if(c.getCount() <= 0){
@@ -45,9 +45,10 @@ public class StudentDaoRead implements IDaoRead {
         ArrayList<Group> groups = new ArrayList<>();
         Cursor c2 = db.rawQuery(query2, null);
         if(c2.getCount() <= 0){
-            throw new RuntimeException("NO DATA FOUND EXCEPTION");
+            groups.clear();
+            c2.close();
         }
-        if (c2.getCount() > 0) {
+        else if (c2.getCount() > 0) {
             c2.moveToFirst();
             do {
                 int groupId = c2.getInt(c2.getColumnIndex(GroupTable.GroupColumns.ID.toString()));

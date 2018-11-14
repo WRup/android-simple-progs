@@ -13,6 +13,7 @@ import com.example.wrup.lab04.controler.DbManager;
 import com.example.wrup.lab04.model.objects.Group;
 import com.example.wrup.lab04.model.objects.Student;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class StudentGroupsActivity extends AppCompatActivity {
@@ -24,6 +25,7 @@ public class StudentGroupsActivity extends AppCompatActivity {
     private DbManager dbManager;
     private EditText nameTextview;
     private EditText surnameTextview;
+    private Button changeGroupBtn;
     boolean editEnabled = false;
 
     @Override
@@ -34,6 +36,7 @@ public class StudentGroupsActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         list = (ListView) findViewById(R.id.groupsList);
         studentId =  extras.getInt("studentId");
+        changeGroupBtn = (Button) findViewById(R.id.change_group_btn);
 
         nameTextview = (EditText)findViewById(R.id.name_edittext);
         surnameTextview = (EditText)findViewById(R.id.surname_edittext);
@@ -45,10 +48,14 @@ public class StudentGroupsActivity extends AppCompatActivity {
             nameTextview.setText(student.getName());
             surnameTextview.setText(student.getSurname());
             groupList = student.getGroups();
+            if(groupList.isEmpty())
+                changeGroupBtn.setText("Add Groups");
         } else {
             nameTextview.setText("");
             surnameTextview.setText("");
             editClicked(findViewById(R.id.ebit_btn));
+            groupList.clear();
+            changeGroupBtn.setText("Add Groups");
         }
 
         adapter = new ArrayAdapter<>(this, android.R.layout.select_dialog_item, groupList);
@@ -83,13 +90,19 @@ public class StudentGroupsActivity extends AppCompatActivity {
     }
 
     public void groupListClicked(View view) {
-        ArrayList<Integer> groupIds = new ArrayList<Integer>();
-        for (int i = 0; i < list.getCount(); ++i) {
-            groupIds.add(((Group)list.getItemAtPosition(i)).getId());
+        ArrayList<Integer> groupIds = new ArrayList<>();
+        ArrayList<Group> tempGroups;
+        if(studentId > 0)
+            tempGroups = dbManager.getStudent(studentId).getGroups();
+        else
+            tempGroups = dbManager.getGroups();
+
+        for(Group gr : tempGroups){
+            groupIds.add(gr.getId());
         }
 
         Intent i = new Intent(StudentGroupsActivity.this, GroupListActivity.class);
-        i.putExtra("groupids", android.text.TextUtils.join(",", groupIds));
+        i.putExtra("groupids", groupIds);
         startActivityForResult(i, 1);
     }
 
@@ -97,14 +110,13 @@ public class StudentGroupsActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
             if(resultCode == RESULT_OK) {
-                String groupids = data.getStringExtra("newIds");
-                String[] array = groupids.isEmpty() ? null : groupids.split(",");
+                ArrayList<Integer> array = data.getIntegerArrayListExtra("newIds");
 
                 adapter.clear();
 
                 if (array != null) {
-                    for (String idString : array) {
-                        adapter.add(dbManager.getGroup(Integer.parseInt(idString)));
+                    for (Integer idGroup : array) {
+                        adapter.add(dbManager.getGroup(idGroup));
                     }
                 }
             }
