@@ -111,7 +111,8 @@ public class StudentGroupsActivity extends AppCompatActivity {
         if (requestCode == 1) {
             if(resultCode == RESULT_OK) {
                 ArrayList<Integer> array = data.getIntegerArrayListExtra("newIds");
-
+                if(!array.isEmpty())
+                    changeGroupBtn.setText("Change Groups");
                 adapter.clear();
 
                 if (array != null) {
