@@ -17,4 +17,11 @@
     <string name="new_group_warn_empty">Write group name</string>
     <string name="edit_student_btn_label">Edit</string>
     <string name="submit_student_edit">Submit</string>
+    <string name="accept">Accept</string>
+    <string name="laboratory">Laboratory</string>
+    <string name="lecture">Lecture</string>
+    <string name="pracitce">Pracitce</string>
+    <string name="field_text">Name or Surname is missing. \tPlease correct.</string>
+    <string name="field_remove_text">Do you really want to remove student?</string>
+    <string name="only_letters">android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"</string>
 </resources>

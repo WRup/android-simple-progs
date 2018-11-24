@@ -1,6 +1,7 @@
 package com.example.wrup.lab04;
 
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.wrup.lab04.controler.DbManager;
 import com.example.wrup.lab04.model.objects.Group;
@@ -70,15 +72,34 @@ public class StudentGroupsActivity extends AppCompatActivity {
             for (int i = 0; i < list.getCount(); ++i) {
                 groups.add((Group)list.getItemAtPosition(i));
             }
-            Student student = new Student(nameTextview.getText().toString(), surnameTextview.getText().toString(), groups);
-            student.setId(this.studentId);
-            if (this.studentId > 0) {
-                dbManager.updateStudent(student);
-            } else {
-                dbManager.insertStudent(student);
+            if(nameTextview.getText().toString().isEmpty() || surnameTextview.getText().toString().isEmpty())
+            {
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(StudentGroupsActivity.this);
+                View mView = getLayoutInflater().inflate(R.layout.dialog_missing_field, null);
+                Button btn2 = (Button) mView.findViewById(R.id.missing_field_button);
+
+                mBuilder.setView(mView);
+                final AlertDialog dialog = mBuilder.create();
+                btn2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
             }
-            Intent i = new Intent(StudentGroupsActivity.this, StudentListActivity.class);
-            startActivity(i);
+            else{
+                Student student = new Student(nameTextview.getText().toString(), surnameTextview.getText().toString(), groups);
+                student.setId(this.studentId);
+                if (this.studentId > 0) {
+                    dbManager.updateStudent(student);
+                } else {
+                    dbManager.insertStudent(student);
+                }
+                Intent i = new Intent(StudentGroupsActivity.this, StudentListActivity.class);
+                startActivity(i);
+            }
+
         } else {
             Button groupBtn = (Button)findViewById(R.id.change_group_btn);
             groupBtn.setVisibility(View.VISIBLE);

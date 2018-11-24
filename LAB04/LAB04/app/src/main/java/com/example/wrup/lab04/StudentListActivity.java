@@ -15,6 +15,10 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+
+import static java.util.Collections.sort;
 
 public class StudentListActivity extends AppCompatActivity {
     private ArrayList<Student> studentList = new ArrayList<>();
@@ -34,6 +38,7 @@ public class StudentListActivity extends AppCompatActivity {
 
     private void fillTheList() {
         studentList = dbManager.getStudents();
+        sort(studentList);
         this.setListItemListener();
 
         adapter = new ArrayAdapter<>(this, android.R.layout.select_dialog_item, studentList);

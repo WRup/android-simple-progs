@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1"
@@ -9,19 +11,21 @@
         android:id="@+id/removeStudentTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/field_remove_text"
+        android:text="@string/field_text"
         android:layout_gravity="center"
         android:layout_marginTop="25sp"
         android:textSize="25sp"
         android:layout_weight="0.05" />
 
     <Button
-        android:layout_marginTop="25sp"
-        android:id="@+id/remove_student_button"
+        android:id="@+id/missing_field_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.05"
         android:background="@color/colorPrimary"
+        android:text="@string/remove_student_btn"
         android:textColor="@android:color/white"
-        android:text="@string/remove_student_btn" />
+        tools:layout_editor_absoluteX="34dp"
+        tools:layout_editor_absoluteY="115dp" />
+
 </LinearLayout>

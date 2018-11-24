@@ -5,13 +5,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.SparseBooleanArray;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.example.wrup.lab04.controler.DbManager;
 import com.example.wrup.lab04.model.objects.Group;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class GroupListActivity extends AppCompatActivity {
 
@@ -29,14 +33,17 @@ public class GroupListActivity extends AppCompatActivity {
     private ListView groupList;
     private ListView groupList2;
     private ListView groupList3;
+    private ArrayList<Boolean> checkedLab = new ArrayList<>();
+    private ArrayList<Boolean> checkedPra = new ArrayList<>();
+    private ArrayList<Boolean> checkedLec = new ArrayList<>();
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_list);
         Bundle extras = getIntent().getExtras();
         ArrayList<Integer> array = extras.getIntegerArrayList("groupids");
-
         dbManager = new DbManager(this);
 
         groupListLabType = dbManager.getGroupsByType(Laboratory);
@@ -82,8 +89,62 @@ public class GroupListActivity extends AppCompatActivity {
                 }
             }
         }
+        fulfillArray(checkedLab, groupList);
+        fulfillArray(checkedPra, groupList2);
+        fulfillArray(checkedLec, groupList3);
+
+
+        groupList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                ListView lv = (ListView) adapterView;
+                if(checkedLab.get(i)){
+                    lv.setItemChecked(i, false);
+                    checkedLab.set(i,false);
+
+                }
+                else {
+                    lv.setItemChecked(i, true);
+                    reverseArray(checkedLab,i);
+                }
+            }
+        });
+
+        groupList2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                ListView lv = (ListView) adapterView;
+                if(checkedPra.get(i)){
+                    lv.setItemChecked(i, false);
+                    checkedPra.set(i,false);
+
+                }
+                else {
+                    lv.setItemChecked(i, true);
+                    reverseArray(checkedPra,i);
+                }
+            }
+        });
+
+        groupList3.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                ListView lv = (ListView) adapterView;
+                if(checkedLec.get(i)){
+                    lv.setItemChecked(i, false);
+                    checkedLab.set(i,false);
+
+                }
+                else {
+                    lv.setItemChecked(i, true);
+                    reverseArray(checkedLec,i);
+                }
+            }
+        });
 
     }
+
+
 
     public void acceptClicked(View view) {
         ArrayList<Integer> groupIds = new ArrayList<>();
@@ -126,4 +187,25 @@ public class GroupListActivity extends AppCompatActivity {
         else
             return null;
     }
+
+    private void fulfillArray(ArrayList<Boolean> arrayList, ListView listView){
+        arrayList.clear();
+
+        for (int i = 0; i < listView.getAdapter().getCount(); i++) {
+            if (listView.getCheckedItemPositions().get(i)) {
+                arrayList.add(true);
+            }
+            else{
+                arrayList.add(false);
+            }
+        }
+    }
+
+    private void reverseArray(ArrayList<Boolean> arrayList, int i){
+        for(int j=0; j<arrayList.size(); j++)
+            arrayList.set(j,false);
+        arrayList.set(i,true);
+    }
+
 }
+

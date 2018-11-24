@@ -8,6 +8,7 @@
 
     <EditText
         android:id="@+id/name_edittext"
+        android:digits="@string/only_letters"
         android:layout_width="213dp"
         android:layout_height="51dp"
         android:layout_marginBottom="8dp"
@@ -25,6 +26,7 @@
 
     <EditText
         android:id="@+id/surname_edittext"
+        android:digits="@string/only_letters"
         android:layout_width="213dp"
         android:layout_height="51dp"
         android:layout_marginBottom="8dp"

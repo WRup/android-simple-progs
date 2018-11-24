@@ -1,10 +1,12 @@
 package com.example.wrup.lab04.model.objects;
 
+import android.support.annotation.NonNull;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
 
-public class Student {
+public class Student implements Comparable<Student> {
     private int id;
     private String name;
     private String surname;
@@ -49,6 +51,12 @@ public class Student {
     }
 
     public String toString() {
-        return name + ' ' + surname ;
+        return surname + ' ' + name ;
+    }
+
+
+    @Override
+    public int compareTo(@NonNull Student student) {
+        return this.surname.compareTo(student.getSurname());
     }
 }
